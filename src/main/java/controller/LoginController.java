@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import dao.NhanVienDAO;
 import entities.NhanVien;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import repositories.NhanVienRepository;
 import utils.CookieUtils;
 
 
@@ -17,11 +17,11 @@ import utils.CookieUtils;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private NhanVienDAO nhanVienDao;
+	private NhanVienRepository nhanVienDao;
 	public LoginController() {
 		super();
 		
-		this.nhanVienDao = new NhanVienDAO();
+		this.nhanVienDao = new NhanVienRepository();
 	}
 	
 	@Override
@@ -41,7 +41,6 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 		String rm= request.getParameter("chkremeber");
 		NhanVien entity = this.nhanVienDao.login(email, password);
-		System.out.println(rm);
 		
 		if (email.equals("")&&password.equals("")) {
 			String error = "Sai email hoặc mật khẩu";

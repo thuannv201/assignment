@@ -1,10 +1,10 @@
-package dao;
+package repositories;
 
 import entities.NhanVien;
 import jakarta.persistence.TypedQuery;
 import utils.HashUtil;
 
-public class NhanVienDAO extends BaseDAO {
+public class NhanVienRepository extends BaseRepository {
 
 	public NhanVien login(String email, String password) {
 		TypedQuery<NhanVien> query = this.hSession.createNamedQuery("User.findByEmail", NhanVien.class);
