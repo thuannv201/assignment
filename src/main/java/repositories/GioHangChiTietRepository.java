@@ -1,5 +1,5 @@
 package repositories;
 
-public class GioHangChiTietRepository extends BaseRepository{
+public class GioHangChiTietRepository {
 
 }

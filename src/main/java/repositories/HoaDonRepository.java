@@ -1,5 +1,5 @@
 package repositories;
 
-public class HoaDonRepository extends BaseRepository{
+public class HoaDonRepository {
 
 }

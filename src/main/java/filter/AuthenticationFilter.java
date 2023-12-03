@@ -2,7 +2,7 @@ package filter;
 
 import java.io.IOException;
 
-import entities.NhanVien;
+import entity.NhanVien;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -12,8 +12,8 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a  href="/assignment/admin/users/" class="nav-link px-2 link-dark">Quản lý người dùng</a></li>
-        <li><a href="/assignment/admin/posts/" class="nav-link px-2 link-dark">Quản lý video</a></li>
+        <li><a  href="/assignment/admin/cua-hang/" class="nav-link px-2 link-dark">Của hàng</a></li>
+        <li><a href="/assignment/admin/nhan-vien/" class="nav-link px-2 link-dark">Nhân Viên</a></li>
       </ul>
 
       <div class="col-md-3 text-end">

@@ -5,24 +5,25 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=SD18203</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=java4</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
         <property name="show_sql">true</property>
+        <property name="packagesToScan">entity</property>
         
-        <!-- Add your annotated classes here -->
-        <mapping class="entities.ChiTietSP"/>
-        <mapping class="entities.ChucVu"/>
-        <mapping class="entities.DongSP"/>
-        <mapping class="entities.GioHang"/>
-        <mapping class="entities.GioHangChiTiet"/>
-        <mapping class="entities.HoaDon"/>
-        <mapping class="entities.HoaDonChiTiet"/>
-        <mapping class="entities.KhachHang"/>
-        <mapping class="entities.MauSac"/>
-        <mapping class="entities.NhanVien"/>
-        <mapping class="entities.NSX"/>
-        <mapping class="entities.SanPham"/>
+        <mapping class="entity.ChiTietSP"/>
+        <mapping class="entity.ChucVu"/>
+        <mapping class="entity.CuaHang"/>
+        <mapping class="entity.DongSP"/>
+        <mapping class="entity.GioHang"/>
+        <mapping class="entity.GioHangChiTiet"/>
+        <mapping class="entity.HoaDon"/>
+        <mapping class="entity.HoaDonChiTiet"/>
+        <mapping class="entity.KhachHang"/>
+        <mapping class="entity.MauSac"/>
+        <mapping class="entity.NhanVien"/>
+        <mapping class="entity.NSX"/>
+        <mapping class="entity.SanPham"/>
     </session-factory>
 </hibernate-configuration>

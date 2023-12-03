@@ -1,40 +1,25 @@
 package utils;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-    private static final SessionFactory FACTORY;
-    private static Session hibernateSession;
+	private static final SessionFactory sessionFactory;
 
-    static {
-        Configuration conf = new Configuration();
+	static {
+		try {
+			Configuration conf = new Configuration();
+			conf.configure("hibernate.cfg.xml");
+			sessionFactory = conf.buildSessionFactory();
+		} catch (Throwable ex) {
+			System.err.println("Initial SessionFactory creation failed." + ex);
+			throw new ExceptionInInitializerError(ex);
+		}
+	}
 
-        conf.configure("hibernate.cfg.xml");
+	public static SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
 
-        ServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .applySettings(conf.getProperties()).build();
-        FACTORY = conf.buildSessionFactory(registry);
-
-    }
-
-    public static SessionFactory getFACTORY() {
-        return FACTORY;
-    }
-
-    public static Session getHibernateSession() {
-        if (hibernateSession == null || !hibernateSession.isOpen()) {
-            hibernateSession = getFACTORY().openSession();
-        }
-
-        return hibernateSession;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(getFACTORY());
-    }
 }

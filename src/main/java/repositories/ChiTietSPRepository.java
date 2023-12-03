@@ -1,5 +1,5 @@
 package repositories;
 
-public class ChiTietSPRepository extends BaseRepository {
+public class ChiTietSPRepository {
 
 }

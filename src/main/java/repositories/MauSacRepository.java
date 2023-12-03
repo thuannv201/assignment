@@ -1,5 +1,5 @@
 package repositories;
 
-public class MauSacRepository extends BaseRepository{
+public class MauSacRepository {
 
 }

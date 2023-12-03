@@ -1,5 +1,5 @@
 package repositories;
 
-public class SanPhamRepository extends BaseRepository{
+public class SanPhamRepository {
 
 }
