@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,13 +22,18 @@ import lombok.Setter;
 public class ChucVu {
 	
 	@Id
-	@Column(name = "Id", unique = true, length = 36)
-	private UUID Id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Id", columnDefinition = "UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID()")
+	private UUID id;
 	
 	@Column(name = "Ma", unique = true, length = 20)
-	private String Ma;
+	private String ma;
 
 	@Column(name = "Ten", length = 30)
-	private String Ten;
+	private String ten;
 
+	public void merge(ChucVu entity) {
+        this.ma = entity.getMa();
+        this.ten = entity.getTen();
+    }
 }

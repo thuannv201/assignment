@@ -18,7 +18,6 @@ public class CuaHangRepository {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             TypedQuery<CuaHang> query = session.createQuery("SELECT ch FROM CuaHang ch", CuaHang.class);
             entities = query.getResultList();
-            System.out.println(entities);
         } catch (Exception e) {
             e.printStackTrace();
         }

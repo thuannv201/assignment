@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.ChucVuService;
 import service.CuaHangService;
 import service.NhanVienService;
 
@@ -20,11 +21,13 @@ public class NhanVienServlet extends HttpServlet {
 
     private NhanVienService nhanVienService;
     private CuaHangService cuaHangService;
+    private ChucVuService chucVuService;
 
     public NhanVienServlet() {
         super();
         this.nhanVienService = new NhanVienService();
         this.cuaHangService = new CuaHangService();
+        this.chucVuService = new ChucVuService();
     }
 
     @Override
@@ -41,7 +44,13 @@ public class NhanVienServlet extends HttpServlet {
                 req.setAttribute("view", "/views/admin/nhan-vien/index.jsp");
                 req.setAttribute("listStaff", this.nhanVienService.findAll());
                 req.getSession().setAttribute("listStore", this.cuaHangService.findAll());
-                req.getSession().setAttribute("listRole", this.cuaHangService.findAll());
+                req.getSession().setAttribute("listRole", this.chucVuService.findAll());
+                req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+                break;
+            case "/create":
+                req.setAttribute("view", "/views/admin/nhan-vien/create.jsp");
+                req.setAttribute("listStore", this.cuaHangService.findAll());
+                req.setAttribute("listRole", this.cuaHangService.findAll());
                 req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
                 break;
             default:

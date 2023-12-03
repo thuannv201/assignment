@@ -21,28 +21,19 @@
 				<tr>
 					<td>STT</td>
 					<td>Mã</td>
-					<td>Họ Và Tên</td>
-					<td>Giới tính</td>
-					<td>Ngày sinh</td>
-					<td>Địa chỉ</td>
-					<td>SĐT</td>
-					<td>Trạng thái</td>
+					<td>Tên</td>
 					<td colspan="2">Thao tác</td>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${ listStaff }" var="staff">
+				<c:forEach items="${ lcv }" var="cv" varStatus="status">
 				<tr>
-					<td>${ staff.id }</td>
-					<td>${ staff.name }</td>
-					<td>${ staff.email }</td>
-					<td>${ staff.gender == 1 ? "Nam" : "Nữ" }</td>
-					<td><img alt="anh" src="${pageContext.request.contextPath}/avatar/${ user.avatar }" width="100px"></td>
-					<td>${ staff.role == 2 ? "Admin" : "User" }</td>
-					<td>${ staff.status == 1 ? "Đang hoạt động" : "Vô hiệu hóa" }</td>
+					<td>${ status.index + 1 }</td>
+					<td>${ cv.ma }</td>
+					<td>${ cv.ten }</td>
 					<td>
 						<a class="btn btn-primary"
-							href="${ pageContext.request.contextPath }/admin/users/edit?id=${ staff.id }">Update</a>
+							href="${ pageContext.request.contextPath }/admin/chuc-vu/detail?id=${ cv.id }">Update</a>
 					</td>
 					<td>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_confirm_${ user.id }">Delete</button>
@@ -56,12 +47,12 @@
 						        </button>
 						      </div>
 						      <div class="modal-body">
-						        Xác nhận xóa người dùng ${ staff.name } ?
+						        Xác nhận xóa người dùng ${ cv.ten } ?
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-						        <form method="POST" action="${ pageContext.request.contextPath }/admin/users/delete" >
-						        	<input type="hidden" name="id" value="${ staff.id }"/>
+						        <form method="POST" action="${ pageContext.request.contextPath }/admin/chuc-vu/delete" >
+						        	<input type="hidden" name="id" value="${ cv.id }"/>
 						        	<button type="submit" class="btn btn-danger">Xóa</button>
 						        </form>
 						      </div>
