@@ -26,20 +26,38 @@
 					<td>Ngày sinh</td>
 					<td>Địa chỉ</td>
 					<td>SĐT</td>
+					<td>Chức Vụ</td>
 					<td>Trạng thái</td>
 					<td colspan="2">Thao tác</td>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${ listStaff }" var="staff">
+				<c:forEach items="${ listStaff }" var="staff" varStatus="status">
 				<tr>
-					<td>${ staff.id }</td>
-					<td>${ staff.name }</td>
-					<td>${ staff.email }</td>
-					<td>${ staff.gender == 1 ? "Nam" : "Nữ" }</td>
-					<td><img alt="anh" src="${pageContext.request.contextPath}/avatar/${ user.avatar }" width="100px"></td>
-					<td>${ staff.role == 2 ? "Admin" : "User" }</td>
-					<td>${ staff.status == 1 ? "Đang hoạt động" : "Vô hiệu hóa" }</td>
+					<td>${ status.index + 1 }</td>
+					<td>${ staff.ma }</td>
+					<td>${ staff.ho } ${ staff.tenDem } ${ staff.ten }</td>
+					<td>
+					    <c:choose>
+					    	<c:when test="${staff.gioiTinh == null}">
+					            
+					        </c:when>
+					        <c:when test="${staff.gioiTinh == 1}">
+					            Nam
+					        </c:when>
+					        <c:when test="${staff.gioiTinh == 0}">
+					            Nữ
+					        </c:when>
+					        <c:otherwise>
+					            Khác
+					        </c:otherwise>
+					    </c:choose>
+					</td>
+					<td>${ staff.ngaySinh }</td>
+					<td>${ staff.diaChi }</td>
+					<td>${ staff.sdt }</td>
+					<td>${ staff.chucVu.ten }</td>
+					<td>${ staff.trangThai == 1 ? "Đang hoạt động" : "Vô hiệu hóa" }</td>
 					<td>
 						<a class="btn btn-primary"
 							href="${ pageContext.request.contextPath }/admin/users/edit?id=${ staff.id }">Update</a>
@@ -56,7 +74,7 @@
 						        </button>
 						      </div>
 						      <div class="modal-body">
-						        Xác nhận xóa người dùng ${ staff.name } ?
+						        Xác nhận xóa người dùng ${ staff.ten } ?
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>

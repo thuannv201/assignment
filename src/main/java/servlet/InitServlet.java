@@ -38,9 +38,14 @@ public class InitServlet extends HttpServlet {
 			newChuVu.setMa("ADMIN");
 			newChuVu.setTen("Admin");
 			this.chucVuService.create(newChuVu);
+			ChucVu nvbh = new ChucVu();
+			nvbh.setMa("NVBH");
+			nvbh.setTen("NV bán hàng");
+			this.chucVuService.create(nvbh);
 		}
 
 		NhanVien exist = this.nhanVienService.findByMa("ADMIN");
+
 		if (exist == null) {
 			NhanVien newNhanVien = new NhanVien();
 			ChucVu admin = this.chucVuService.findByMa("ADMIN");

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="col-10 offset-1">
-  <form method="POST" enctype="multipart/form-data">
+  <form method="POST">
     <div class="row">
       <div class="col">
         <label for="ma">Mã</label>
@@ -19,16 +19,16 @@
     </div>
     <div class="row">
       <div class="col">
-        <label for="ten">Tên</label>
-        <input type="text" class="form-control" id="ten" name="ten" />
-      </div>
-      <div class="col">
         <label for="tenDem">Họ</label>
         <input type="text" class="form-control" id="tenDem" name="tenDem" />
       </div>
       <div class="col">
         <label for="ho">Tên Đệm</label>
         <input type="text" class="form-control" id="ho" name="ho" />
+      </div>
+      <div class="col">
+        <label for="ten">Tên</label>
+        <input type="text" class="form-control" id="ten" name="ten" />
       </div>
     </div>
     <div class="row">
@@ -41,8 +41,8 @@
         <input type="date" class="form-control" id="ngaySinh" name="ngaySinh" />
       </div>
       <div class="col">
-        <label for="gender">Giới tính</label>
-        <select class="form-control" id="gender" name="gender">
+        <label for="gioiTinh">Giới tính</label>
+        <select class="form-control" id="gioiTinh" name="gioiTinh">
           <option value="1">Nam</option>
           <option value="0">Nữ</option>
           <option value="2">Khác</option>
@@ -81,7 +81,7 @@
       </div>
     </div>
     <button
-      formaction="${ pageContext.request.contextPath }/admin/users/store"
+      formaction="${ pageContext.request.contextPath }/admin/nhan-vien/create"
       type="submit"
       class="btn btn-primary mt-3"
     >

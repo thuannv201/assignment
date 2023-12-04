@@ -36,17 +36,17 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String ma = request.getParameter("ma");
+		String ma = request.getParameter("username");
 		String password = request.getParameter("password");
 		String rm = request.getParameter("chkremeber");
 		NhanVien entity = this.nhanVienRepository.login(ma, password);
 
 		if (ma.equals("") && password.equals("")) {
-			String error = "Sai mã hoặc mật khẩu";
+			String error = "Sai username hoặc mật khẩu";
 			request.getSession().setAttribute("error", error);
 		} else {
 			if (entity == null) {
-				String error = "Sai mã hoặc mật khẩu";
+				String error = "Sai username hoặc mật khẩu";
 				request.getSession().setAttribute("error", error);
 				String location = request.getContextPath() + "/login";
 				response.sendRedirect(location);

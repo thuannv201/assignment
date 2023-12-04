@@ -11,8 +11,8 @@
 		</c:if>
 		<form method="POST" action="${ pageContext.request.contextPath }/login">
 			<div class="mt-3">
-				<label for="email">Email</label>
-				<input type="text" name="email" id="email" class="form-control" value="${ username }"/>
+				<label for="username">UserName</label>
+				<input type="text" name="username" id="username" class="form-control" value="${ username }"/>
 			</div>
 			<div class="mt-3">
 				<label for="password">Password</label>

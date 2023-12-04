@@ -2,7 +2,6 @@ package entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +12,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -56,12 +58,12 @@ public class NhanVien {
     @Column(name = "MatKhau", length = 65535)
     private String matKhau;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdCH", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne()
+    @JoinColumn(name = "IdCH", referencedColumnName = "id")
     private CuaHang cuaHang;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "IdCV", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne()
+    @JoinColumn(name = "IdCV", referencedColumnName = "id")
     private ChucVu chucVu;
 
     @Column(name = "IdGuiBC")
@@ -69,4 +71,33 @@ public class NhanVien {
 
     @Column(name = "TrangThai")
     private int trangThai;
+
+    public void setNgaySinh(String yourDateStr) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            this.ngaySinh = dateFormat.parse(yourDateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Date getYourDate() {
+        return ngaySinh;
+    }
+
+    public void merge(NhanVien entity) {
+        this.ma = entity.getMa();
+        this.ten = entity.getTen();
+        this.tenDem = entity.getTenDem();
+        this.ho = entity.getHo();
+        this.gioiTinh = entity.getGioiTinh();
+        this.ngaySinh = entity.getNgaySinh();
+        this.diaChi = entity.getDiaChi();
+        this.sdt = entity.getSdt();
+        this.matKhau = entity.getMatKhau();
+        this.cuaHang = entity.getCuaHang();
+        this.chucVu = entity.getChucVu();
+        this.idGuiBC = entity.getIdGuiBC();
+        this.trangThai = entity.getTrangThai();
+    }
 }
