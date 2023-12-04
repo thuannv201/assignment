@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <title>home</title>
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath }/css/bootstrap.min.css"></link>

@@ -10,12 +10,12 @@
 <body>
 	<div class="col-10 offset-1">
 		<header>
-			<h3>Quản lý Nhân Viên</h3>
+			<h3>Quản lý chức vụ</h3>
 		</header>
 		<div>
 	        <jsp:include page="create.jsp"></jsp:include>
 	      </div>
-		<h4>Danh sách Nhân Viên</h4>
+		<h4>Danh sách chức vụ</h4>
 		<table class="table table-strip mt-3">
 			<thead>
 				<tr>
@@ -36,8 +36,8 @@
 							href="${ pageContext.request.contextPath }/admin/chuc-vu/detail?id=${ cv.id }">Update</a>
 					</td>
 					<td>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_confirm_${ user.id }">Delete</button>
-						<div class="modal fade" id="delete_confirm_${ staff.id }" tabindex="-1" role="dialog" aria-hidden="true">
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete_confirm_${ cv.id }">Delete</button>
+						<div class="modal fade" id="delete_confirm_${ cv.id }" tabindex="-1" role="dialog" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
 						      <div class="modal-header">
@@ -47,7 +47,7 @@
 						        </button>
 						      </div>
 						      <div class="modal-body">
-						        Xác nhận xóa người dùng ${ cv.ten } ?
+						        Xác nhận xóa chức vụ ${ cv.ten } ?
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>

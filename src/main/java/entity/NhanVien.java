@@ -95,8 +95,6 @@ public class NhanVien {
         this.diaChi = entity.getDiaChi();
         this.sdt = entity.getSdt();
         this.matKhau = entity.getMatKhau();
-        this.cuaHang = entity.getCuaHang();
-        this.chucVu = entity.getChucVu();
         this.idGuiBC = entity.getIdGuiBC();
         this.trangThai = entity.getTrangThai();
     }

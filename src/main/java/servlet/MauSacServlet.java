@@ -33,15 +33,16 @@ public class MauSacServlet extends HttpServlet {
 		switch (uriPath) {
 		case "/":
 			req.setAttribute("view", "/views/admin/mau-sac/index.jsp");
-			req.setAttribute("stores", this.mauSacService.findAll());
+			req.setAttribute("lms", this.mauSacService.findAll());
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
 			break;
 		case "/detail":
 			String id = req.getParameter("id");
-			MauSac sp = mauSacService.getById(UUID.fromString(id));
+			MauSac ms = mauSacService.getById(UUID.fromString(id));
 			req.setAttribute("view", "/views/admin/mau-sac/edit.jsp");
-			req.setAttribute("sp", sp);
+			req.setAttribute("ms", ms);
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+			break;
 		default:
 			break;
 		}

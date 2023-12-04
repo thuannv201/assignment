@@ -1,7 +1,11 @@
 package entity;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,8 +21,9 @@ import lombok.Setter;
 @Setter
 public class SanPham {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", columnDefinition = "UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID()")
-    private String id;
+    private UUID id;
 
     @Column(name = "Ma", unique = true, length = 20)
     private String ma;

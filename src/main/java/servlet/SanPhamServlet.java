@@ -22,6 +22,10 @@ public class SanPhamServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     private SanPhamService sanPhamService;
+    
+    public SanPhamServlet() {
+    	this.sanPhamService = new SanPhamService();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +33,7 @@ public class SanPhamServlet extends HttpServlet{
 		switch (uriPath) {
 		case "/":
 			req.setAttribute("view", "/views/admin/san-pham/index.jsp");
-			req.setAttribute("stores", this.sanPhamService.findAll());
+			req.setAttribute("lsp", this.sanPhamService.findAll());
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
 			break;
 		case "/detail":
@@ -38,6 +42,7 @@ public class SanPhamServlet extends HttpServlet{
 			req.setAttribute("view", "/views/admin/san-pham/edit.jsp");
 			req.setAttribute("sp", sp);
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+			break;
 		default:
 			break;
 		}

@@ -3,43 +3,74 @@ package service;
 import java.util.List;
 import java.util.UUID;
 
+import entity.ChucVu;
+import entity.CuaHang;
 import entity.NhanVien;
+import repositories.ChucVuRepository;
+import repositories.CuaHangRepository;
 import repositories.NhanVienRepository;
+import utils.HashUtil;
 
 public class NhanVienService {
 
-    private NhanVienRepository nhanVienRepository;
-    
-    public NhanVienService() {
-        this.nhanVienRepository =  new NhanVienRepository();
-    }
+	private NhanVienRepository nhanVienRepository;
+	private CuaHangRepository cuaHangRepository;
+	private ChucVuRepository chucVuRepository;
 
-    public List<NhanVien> findAll() {
-        return nhanVienRepository.findAll();
-    }
+	public NhanVienService() {
+		this.nhanVienRepository = new NhanVienRepository();
+		this.cuaHangRepository = new CuaHangRepository();
+		this.chucVuRepository = new ChucVuRepository();
+	}
 
-    public NhanVien getById(UUID id) {
-        return nhanVienRepository.findById(id);
-    }
+	public List<NhanVien> findAll() {
+		return nhanVienRepository.findAll();
+	}
 
-    public void create(NhanVien entity) {
-        nhanVienRepository.create(entity);
-    }
+	public NhanVien getById(UUID id) {
+		return nhanVienRepository.findById(id);
+	}
 
-    public void update(NhanVien entity) {
-        nhanVienRepository.update(entity);
-    }
+	public void create(NhanVien entity) {
+		if (entity.getCuaHang() != null && entity.getCuaHang().getId() != null) {
+			CuaHang cuaHang = cuaHangRepository.findById(entity.getCuaHang().getId());
+			entity.setCuaHang(cuaHang);
+		}
+		if (entity.getChucVu() != null && entity.getChucVu().getId() != null) {
+			ChucVu chucVu = chucVuRepository.findById(entity.getChucVu().getId());
+			entity.setChucVu(chucVu);
+		}
+		if (entity.getMatKhau() != null) {    		
+    		entity.setMatKhau(HashUtil.hash(entity.getMatKhau()));
+    	}
+		nhanVienRepository.create(entity);
+	}
 
-    public void delete(NhanVien entity) {
-        nhanVienRepository.delete(entity);
-    }
+	public void update(NhanVien entity) {
+		if (entity.getCuaHang() != null && entity.getCuaHang().getId() != null) {
+			CuaHang cuaHang = cuaHangRepository.findById(entity.getCuaHang().getId());
+			entity.setCuaHang(cuaHang);
+		}
+		if (entity.getChucVu() != null && entity.getChucVu().getId() != null) {
+			ChucVu chucVu = chucVuRepository.findById(entity.getChucVu().getId());
+			entity.setChucVu(chucVu);
+		}
+		if (entity.getMatKhau() != null) {    		
+    		entity.setMatKhau(HashUtil.hash(entity.getMatKhau()));
+    	}
+		nhanVienRepository.update(entity);
+	}
 
-    public void deleteById(UUID id) {
-        nhanVienRepository.deleteById(id);
-    }
+	public void delete(NhanVien entity) {
+		nhanVienRepository.delete(entity);
+	}
 
-    public NhanVien findByMa(String ma) {
-        return nhanVienRepository.findByMa(ma);
-    }
+	public void deleteById(UUID id) {
+		nhanVienRepository.deleteById(id);
+	}
+
+	public NhanVien findByMa(String ma) {
+		return nhanVienRepository.findByMa(ma);
+	}
 
 }

@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,6 +21,7 @@ import lombok.Setter;
 @Setter
 public class DongSP {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
     private UUID id;
 
@@ -27,4 +30,9 @@ public class DongSP {
 
     @Column(name = "Ten")
     private String ten;
+
+    public void merge(DongSP dongSP) {
+        this.ma = dongSP.getMa();
+        this.ten = dongSP.getTen();
+    }
 }

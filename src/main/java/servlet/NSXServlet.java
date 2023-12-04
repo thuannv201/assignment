@@ -22,14 +22,18 @@ public class NSXServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     private NSXService nsxService;
-
+    
+    public NSXServlet() {
+    	nsxService = new NSXService();
+    }
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uriPath = req.getRequestURI().replace(req.getContextPath() + "/admin/nsx", "");
 		switch (uriPath) {
 		case "/":
 			req.setAttribute("view", "/views/admin/nsx/index.jsp");
-			req.setAttribute("stores", this.nsxService.findAll());
+			req.setAttribute("lnsx", this.nsxService.findAll());
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
 			break;
 		case "/detail":
@@ -38,6 +42,7 @@ public class NSXServlet extends HttpServlet{
 			req.setAttribute("view", "/views/admin/nsx/edit.jsp");
 			req.setAttribute("nsx", nsx);
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+			break;
 		default:
 			break;
 		}

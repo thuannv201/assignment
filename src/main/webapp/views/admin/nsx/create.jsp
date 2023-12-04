@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="col-10 offset-1">
   <form method="POST">
     <div class="row">
@@ -12,24 +11,8 @@ pageEncoding="UTF-8"%>
         <input type="text" class="form-control" id="ten" name="ten" />
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <label for="quocGia">Quốc Gia</label>
-        <input type="text" class="form-control" id="quocGia" name="quocGia" />
-      </div>
-      <div class="col">
-        <label for="thanhPho">Thành Phố</label>
-        <input type="text" class="form-control" id="thanhPho" name="thanhPho" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label for="diaChi">Địa chỉ</label>
-        <textarea class="form-control" id="diaChi" name="diaChi"></textarea>
-      </div>
-    </div>
     <button
-      formaction="${ pageContext.request.contextPath }/admin/cua-hang/create"
+      formaction="${ pageContext.request.contextPath }/admin/nsx/create"
       type="submit"
       class="btn btn-primary mt-3"
     >

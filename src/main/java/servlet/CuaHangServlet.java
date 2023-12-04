@@ -43,6 +43,7 @@ public class CuaHangServlet extends HttpServlet {
 			req.setAttribute("view", "/views/admin/cua-hang/edit.jsp");
 			req.setAttribute("store", cuaHang);
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+			break;
 		default:
 			break;
 		}

@@ -45,6 +45,7 @@ public class ChucVuServlet extends HttpServlet {
 			req.setAttribute("view", "/views/admin/chuc-vu/edit.jsp");
 			req.setAttribute("cv", chucVu);
 			req.getRequestDispatcher("/views/layout.jsp").forward(req, resp);
+			break;
 		default:
 			break;
 		}

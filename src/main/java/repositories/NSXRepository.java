@@ -34,23 +34,23 @@ public class NSXRepository {
         return entity;
     }
 
-    public void create(NSX NSX) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.save(NSX);
-            transaction.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            transaction.rollback();
-        }
+    public void create(NSX entity) {
+    	Transaction transaction = null;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+			session.save(entity);
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
     }
 
-    public void update(NSX NSX) {
+    public void update(NSX nsx) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.update(NSX);
+            session.update(nsx);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
