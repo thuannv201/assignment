@@ -82,4 +82,18 @@ public class ChucVuRepository {
 	            transaction.rollback();
 	        }
 	    }
+	    
+	    public boolean checkExist(String ma) {
+	        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+	            TypedQuery<ChucVu> query = session.createQuery("SELECT ch FROM ChucVu ch WHERE ch.ma = :ma", ChucVu.class);
+	            query.setParameter("ma", ma);
+	            ChucVu exist = query.getSingleResult();
+	            if (exist != null) {
+	            	return true;
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return false;
+	    }
 }

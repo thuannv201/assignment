@@ -36,4 +36,8 @@ public class ChucVuService {
 	public void deleteById(UUID id) {
 		chucVuRepository.deleteById(id);
 	}
+	
+	public boolean checkExist(String id) {
+		return chucVuRepository.checkExist(id);
+	}
 }
