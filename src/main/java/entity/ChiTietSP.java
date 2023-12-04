@@ -1,6 +1,7 @@
 package entity;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +21,7 @@ import lombok.Setter;
 public class ChiTietSP {
     @Id
     @Column(name = "Id", columnDefinition = "UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID()")
-    private String id;
+    private UUID id;
 
     @Column(name = "IdSP", columnDefinition = "UNIQUEIDENTIFIER")
     private String idSP;

@@ -27,4 +27,9 @@ public class MauSac {
 
     @Column(name = "Ten", length = 30)
     private String ten;
+
+    public void merge(MauSac mauSac) {
+        this.ma = mauSac.getMa();
+        this.ten = mauSac.getTen();
+    }
 }

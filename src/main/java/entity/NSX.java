@@ -27,4 +27,9 @@ public class NSX {
 
     @Column(name = "Ten", length = 30)
     private String ten;
+
+    public void merge(NSX nsx) {
+        this.ma = nsx.getMa();
+        this.ten = nsx.getTen();
+    }
 }

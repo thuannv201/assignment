@@ -2,7 +2,10 @@ package entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,11 +53,13 @@ public class NhanVien {
     @Column(name = "MatKhau", length = 65535)
     private String matKhau;
 
-    @Column(name = "IdCH")
-    private UUID idCH;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdCH", referencedColumnName = "id", insertable = false, updatable = false)
+    private CuaHang cuaHang;
 
-    @Column(name = "IdCV")
-    private UUID idCV;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdCV", referencedColumnName = "id", insertable = false, updatable = false)
+    private ChucVu chucVu;
 
     @Column(name = "IdGuiBC")
     private UUID idGuiBC;

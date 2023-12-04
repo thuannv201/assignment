@@ -25,4 +25,9 @@ public class SanPham {
 
     @Column(name = "Ten", length = 30)
     private String ten;
+
+    public void merge(SanPham sanPham) {
+        this.ma = sanPham.getMa();
+        this.ten = sanPham.getTen();
+    }
 }

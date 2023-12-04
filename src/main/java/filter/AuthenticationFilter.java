@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter
+@WebFilter(urlPatterns = {"/admin/*"})
 public class AuthenticationFilter implements Filter {
 
 	@Override
