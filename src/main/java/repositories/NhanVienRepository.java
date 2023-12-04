@@ -102,4 +102,17 @@ public class NhanVienRepository {
 		}
 	}
 
+	public NhanVien findByMa(String ma) {
+		NhanVien entity = null;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			TypedQuery<NhanVien> query = session.createQuery("SELECT e FROM NhanVien e WHERE e.ma = :ma",
+					NhanVien.class);
+			query.setParameter("ma", ma);
+			entity = query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return entity;
+	}
+
 }

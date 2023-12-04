@@ -1,24 +1,45 @@
 package service;
 
 import java.util.List;
+import java.util.UUID;
 
 import entity.NhanVien;
-import repositories.ChucVuRepository;
 import repositories.NhanVienRepository;
 
 public class NhanVienService {
 
     private NhanVienRepository nhanVienRepository;
-    private ChucVuRepository chucVuRepository;
     
     public NhanVienService() {
         this.nhanVienRepository =  new NhanVienRepository();
-        this.chucVuRepository = new ChucVuRepository();
     }
 
     public List<NhanVien> findAll() {
-    	chucVuRepository.findAll();
-        return null;
+        return nhanVienRepository.findAll();
+    }
+
+    public NhanVien getById(UUID id) {
+        return nhanVienRepository.findById(id);
+    }
+
+    public void create(NhanVien entity) {
+        nhanVienRepository.create(entity);
+    }
+
+    public void update(NhanVien entity) {
+        nhanVienRepository.update(entity);
+    }
+
+    public void delete(NhanVien entity) {
+        nhanVienRepository.delete(entity);
+    }
+
+    public void deleteById(UUID id) {
+        nhanVienRepository.deleteById(id);
+    }
+
+    public NhanVien findByMa(String ma) {
+        return nhanVienRepository.findByMa(ma);
     }
 
 }

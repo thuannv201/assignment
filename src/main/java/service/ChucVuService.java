@@ -40,4 +40,8 @@ public class ChucVuService {
 	public boolean checkExist(String id) {
 		return chucVuRepository.checkExist(id);
 	}
+
+	public ChucVu findByMa(String ma) {
+		return chucVuRepository.findByMa(ma);
+	}
 }
